@@ -1,0 +1,20 @@
+#! /usr/bin/env sh
+
+# Remove stopped containers
+docker container prune --force
+
+# Remove dangling images
+for image in $(docker images --filter "dangling=true" -q); do
+    docker rmi --force $image 2> /dev/null
+done
+
+# Clean up volumes
+docker volume prune --force
+
+# Remove untagged images
+for image in $(docker images | grep "^<none>" | sed -E "s/[[:space:]]+/ /g" | cut -d ' ' -f 3); do
+    docker rmi --force $image 2> /dev/null
+done
+
+# Clean up images
+docker image prune --force

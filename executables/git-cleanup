@@ -1,0 +1,41 @@
+#! /usr/bin/env sh
+
+EMPH=$(printf '\e[34m')
+RESET=$(printf '\e[0m')
+
+# Require exactly one argument
+if [ $# -ne 1 ]; then
+    echo 1>&2 "Usage: $0 <name of development branch>"
+    exit 1
+fi
+DEV_BRANCH=$1
+
+# Remove local copies of merged branches
+git fetch
+for BRANCH_NAME in $(git branch --merged "${DEV_BRANCH}" | grep -v "\*"); do
+    if [ "$BRANCH_NAME" = "$DEV_BRANCH" ]; then continue; fi
+    echo "${EMPH}${BRANCH_NAME}${RESET} is already merged. Delete it? (y/n): "
+    read -r confirm
+    echo "$confirm" | grep -q "[yY][eE]*[sS]*" || continue
+    git branch -d "${BRANCH_NAME}"
+done
+
+# Cleanup outdated references
+echo "⌛ Cleaning up outdated references..."
+git remote prune origin
+
+# Remove branches that have been deleted upstream
+for BRANCH_NAME in $(git for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {print $1}'); do
+    echo "${EMPH}${BRANCH_NAME}${RESET} has been deleted upstream. Delete the local copy? (y/n): "
+    read -r confirm
+    echo "$confirm" | grep -q "[yY][eE]*[sS]*" || continue
+    git branch -D "${BRANCH_NAME}"
+done
+
+# Compact database
+echo "⌛ Compacting local database..."
+git gc --aggressive
+
+# List local branches
+echo "⌛ Available local branches..."
+git branch -vv

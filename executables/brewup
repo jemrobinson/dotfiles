@@ -1,0 +1,8 @@
+#! /bin/sh
+brew update
+brew upgrade --force
+brew upgrade --cask --force
+brew cleanup
+brew autoremove
+brew doctor
+sudo chown -R jrobinson:staff /Applications/*.app 2> /dev/null

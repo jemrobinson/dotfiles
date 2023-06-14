@@ -1,0 +1,10 @@
+#! /usr/bin/env sh
+
+echo "Looking for deleted key vaults to purge..."
+az account list --all --query '[].name' -o tsv 2>/dev/null | while read -r SUBSCRIPTION; do
+    echo "Checking subscription '$SUBSCRIPTION'..."
+    az keyvault list-deleted --subscription "$SUBSCRIPTION" --query '[].name' -o tsv 2>/dev/null | while read -r KVNAME; do
+        echo "Purging deleted '$KVNAME' in '$SUBSCRIPTION'..."
+        az keyvault purge --name "$KVNAME" --subscription "$SUBSCRIPTION" 2>/dev/null
+    done
+done
