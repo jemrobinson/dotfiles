@@ -1,0 +1,35 @@
+[alias]
+    autorebase = "!\
+    rebase_onto_target(){ \
+        TARGET=$1; \
+        if [ -e $1 ]; then \
+            TARGET=main; \
+        fi; \
+        GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD); \
+        git checkout $TARGET; \
+        git pull; \
+        git checkout $GIT_BRANCH; \
+        git rebase $TARGET;\
+    }; rebase_onto_target"
+    fix-permissions = "!\
+    fix_permissions(){ \
+        git diff -p \
+        | grep -E '^(diff|old mode|new mode)' \
+        | sed -e 's/^old/NEW/;s/^new/old/;s/^NEW/new/' \
+        | git apply;\
+    }; fix_permissions"
+    merge-commits = "!\
+    merges_since_date(){ \
+        FROM=$1; \
+        TO=$2; \
+        git log --merges --first-parent --pretty='format:%C(auto)%h %<(17) %ah %b' --after=$FROM --before=$TO; \
+    }; merges_since_date"
+[help]
+    autocorrect = 5
+[pull]
+    rebase = true
+[push]
+    autoSetupRemote = true
+[user]
+    name = James Robinson
+    email = james.em.robinson@gmail.com
