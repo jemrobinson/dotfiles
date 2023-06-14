@@ -12,4 +12,4 @@ homebrew/install.sh
 
 # Install dotfiles with stow
 echo "⚫ Installing dotfiles with stow"
-stow -v git shell zsh
+stow -d dotfiles -t .. -v -R $(ls dotfiles)
