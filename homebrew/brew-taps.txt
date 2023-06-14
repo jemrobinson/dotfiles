@@ -1,0 +1,4 @@
+azure/functions
+homebrew/cask-versions
+jandedobbeleer/oh-my-posh
+kde-mac/kde

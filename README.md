@@ -9,12 +9,6 @@ Install `brew` and `git` as follows.
 ```sh
 # Install XCode tools (including clang, gcc and git)
 xcode-select --install
-
-# # Install Homebrew
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
-# # Install git with homebrew
-# brew install git
 ```
 
 Next clone this repository into your home directory at `.dotfiles`.
