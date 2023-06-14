@@ -21,5 +21,6 @@ done
 
 # Install executables with stow
 echo "❗ Installing executables with stow"
-mkdir -p "$HOME_DIRECTORY"/.local/bin
-stow -t "$HOME_DIRECTORY"/.local/bin -R executables
+mkdir -p "${HOME_DIRECTORY}/.local/bin"
+stow -t "${HOME_DIRECTORY}/.local/bin" -R executables
+for executable in $(ls "${HOME_DIRECTORY}/.local/bin"); do echo "  ✅ Installed $executable"; done
