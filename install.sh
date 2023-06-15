@@ -1,20 +1,16 @@
 #! /usr/bin/env sh
 
-# HOME_DIRECTORY="${HOME}"
-HOME_DIRECTORY="${HOME}/tmp"
+HOME_DIRECTORY="${HOME}"
 
 # Install Homebrew
 if ! (type brew > /dev/null 2>&1); then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
+export PATH=/opt/homebrew/bin:$PATH
 
 # Install homebrew packages
-echo "🍺 Installing Homebrew packages"
-homebrew/install.sh
-
-# Install oh-my-zsh
-echo "🐚 Installing oh-my-zsh"
-oh-my-zsh/install.sh
+echo "🍺 Installing stow with Homebrew"
+brew install stow 2> /dev/null
 
 # Install dotfiles with stow
 echo "⚫ Installing dotfiles with stow"
@@ -28,3 +24,12 @@ echo "❗ Installing executables with stow"
 mkdir -p "${HOME_DIRECTORY}/.local/bin"
 stow -t "${HOME_DIRECTORY}/.local/bin" -R executables
 for executable in $(ls "${HOME_DIRECTORY}/.local/bin"); do echo "  ✅ Installed $executable"; done
+
+# Install homebrew packages
+echo "🍺 Installing Homebrew packages"
+homebrew/install.sh
+
+# Install oh-my-zsh
+echo "🐚 Installing oh-my-zsh"
+oh-my-zsh/install.sh
+
