@@ -2,8 +2,8 @@
 # Ignore duplicates in history
 export HISTCONTROL=ignoredups
 
-# Add homebrew sbin and local bin to path
-export PATH="${PATH}:${HOME}/.local/bin:/usr/local/sbin"
+# Add local bin and homebrew bin to path
+export PATH="${PATH}:${HOME}/.local/bin:/opt/homebrew/bin"
 
 # ## Add OpenSSL compilation flags
 # OPENSSL_PREFIX="/usr/local/opt/openssl@1.1"

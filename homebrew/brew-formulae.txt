@@ -12,7 +12,6 @@ jq
 node
 oh-my-posh
 postgis
-postgresql
 pre-commit
 pulumi
 pyenv

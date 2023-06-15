@@ -32,4 +32,4 @@ done < "${script_directory}/vscode-plugins.txt"
 
 # Install bundle with homebrew
 echo "  ⌛ Applying bundle..."
-brew bundle --file "${script_directory}/Brewfile" --force cleanup
+brew bundle --file "${script_directory}/Brewfile" --force --cleanup
