@@ -15,9 +15,9 @@ postgis
 pre-commit
 pulumi
 pyenv
-pyenv-virtualenv
 ruby
 shellcheck
 stow
 tree
 wget
+whatwhat
