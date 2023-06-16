@@ -1,2 +1,3 @@
 .DS_Store
 homebrew/Brewfile
+homebrew/Brewfile.lock.json
