@@ -31,3 +31,4 @@ else
     echo "⌛ Installing Powerlevel 10k..."
     git clone https://github.com/romkatv/powerlevel10k.git "$POWERLEVEL10K_DIR"
 fi
+

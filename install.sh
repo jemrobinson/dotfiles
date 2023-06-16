@@ -12,6 +12,10 @@ export PATH=/opt/homebrew/bin:$PATH
 echo "🍺 Installing stow with Homebrew"
 brew install stow 2> /dev/null
 
+# Install oh-my-zsh
+echo "🐚 Installing oh-my-zsh"
+oh-my-zsh/install.sh
+
 # Install dotfiles with stow
 echo "⚫ Installing dotfiles with stow"
 for category in $(ls dotfiles); do
@@ -28,8 +32,4 @@ for executable in $(ls "${HOME_DIRECTORY}/.local/bin"); do echo "  ✅ Installed
 # Install homebrew packages
 echo "🍺 Installing Homebrew packages"
 homebrew/install.sh
-
-# Install oh-my-zsh
-echo "🐚 Installing oh-my-zsh"
-oh-my-zsh/install.sh
 
