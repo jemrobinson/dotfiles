@@ -4,6 +4,7 @@ script_directory=$(dirname "$(readlink -f "$0")")
 
 # Construct Brewfile
 rm "${script_directory}/Brewfile" 2> /dev/null
+rm "${script_directory}/Brewfile.lock.json" 2> /dev/null
 touch "${script_directory}/Brewfile"
 
 # Add taps
@@ -32,4 +33,5 @@ done < "${script_directory}/vscode-plugins.txt"
 
 # Install bundle with homebrew
 echo "  ⌛ Applying bundle..."
+brew update
 brew bundle --file "${script_directory}/Brewfile" --force --cleanup
