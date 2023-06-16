@@ -5,6 +5,7 @@ HOME_DIRECTORY="${HOME}"
 # Install fonts
 echo "🖨️ Installing fonts"
 cp fonts/*.ttf ~/Library/Fonts
+find ~/Library/Fonts/*.ttf -exec echo '  ✅ Installed {}' \;
 
 # Install Homebrew
 if ! (type brew > /dev/null 2>&1); then
