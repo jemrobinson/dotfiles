@@ -24,6 +24,20 @@
         TO=$2; \
         git log --merges --first-parent --pretty='format:%C(auto)%h %<(17) %ah %b' --after=$FROM --before=$TO; \
     }; merges_since_date"
+    sync-fork = "!\
+    sync_fork(){ \
+        TARGET=$1; \
+        GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD); \
+        if [ -e $1 ]; then \
+            TARGET=main; \
+        fi; \
+        git checkout $TARGET; \
+        git pull; \
+        git fetch upstream; \
+        git merge upstream/${TARGET}; \
+        git push; \
+        git checkout $GIT_BRANCH; \
+    }; sync_fork"
 [help]
     autocorrect = 5
 [pull]
