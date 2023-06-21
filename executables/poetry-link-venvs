@@ -1,0 +1,19 @@
+#! /usr/bin/env sh
+
+POETRY_VENV_DIR="${HOME}/Library/Caches/pypoetry/virtualenvs"
+PYENV_VENV_DIR="${HOME}/.pyenv/versions"
+
+find "$POETRY_VENV_DIR" -type d -depth 1 | while read -r VENV_PATH; do
+    VENV_NAME=$(echo "$VENV_PATH" | rev | cut -d '-' -f 3-999 | cut -d '/' -f 1 | rev);
+    TARGET="${PYENV_VENV_DIR}/${VENV_NAME}"
+    # If the target already exists as a symlink then remove it
+    if [ -e "$TARGET" ] && [ -L "$TARGET" ]; then
+        echo "🧼 Removing existing link to '$TARGET'"
+        rm "$TARGET";
+    fi
+    # If the target does not exist then create a symlink
+    if [ ! -e "$TARGET" ]; then
+        echo "✅ Creating link to '$TARGET'"
+        ln -s "$VENV_PATH" "${PYENV_VENV_DIR}/${VENV_NAME}";
+    fi
+done
