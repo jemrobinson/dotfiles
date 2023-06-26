@@ -16,4 +16,15 @@ find "$POETRY_VENV_DIR" -type d -depth 1 | while read -r VENV_PATH; do
         echo "✅ Creating link to '$TARGET'"
         ln -s "$VENV_PATH" "${PYENV_VENV_DIR}/${VENV_NAME}";
     fi
+    # Symlink poetry executable from pyenv
+    POETRY_EXECUTABLE_SOURCE="$(realpath ${VENV_PATH}/bin/python/../poetry)"
+    if [ -e "$POETRY_EXECUTABLE_SOURCE" ]; then
+        POETRY_EXECUTABLE_TARGET="${VENV_PATH}/bin/poetry"
+        if [ -e "$POETRY_EXECUTABLE_TARGET" ]; then
+            echo "🙅 Poetry already exists in '$TARGET'"
+        else
+            ln -s "$POETRY_EXECUTABLE_SOURCE" "$POETRY_EXECUTABLE_TARGET"
+            echo "✅ Creating poetry symlink in '$TARGET'"
+        fi
+    fi
 done
