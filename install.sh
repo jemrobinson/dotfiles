@@ -23,7 +23,7 @@ oh-my-zsh/install.sh
 
 # Install dotfiles with stow
 echo "⚫ Installing dotfiles with stow"
-for category in $(ls dotfiles); do
+find dotfiles -type d -depth 1 | while read -r category; do
     echo "  ⌛ Working on $category"
     stow -d dotfiles -t "$HOME_DIRECTORY" -R "$category"
 done
@@ -32,7 +32,9 @@ done
 echo "❗ Installing executables with stow"
 mkdir -p "${HOME_DIRECTORY}/.local/bin"
 stow -t "${HOME_DIRECTORY}/.local/bin" -R executables
-for executable in $(ls "${HOME_DIRECTORY}/.local/bin"); do echo "  ✅ Installed $executable"; done
+find "${HOME_DIRECTORY}/.local/bin" -type f -depth 1 | while read -r executable; do
+    echo "  ✅ Installed $executable"
+done
 
 # Install homebrew packages
 echo "🍺 Installing Homebrew packages"
