@@ -23,7 +23,7 @@ oh-my-zsh/install.sh
 
 # Install dotfiles with stow
 echo "⚫ Installing dotfiles with stow"
-find dotfiles -type d -depth 1 | while read -r category; do
+find dotfiles -type d -depth 1 -exec basename {} \; | while read -r category; do
     echo "  ⌛ Working on $category"
     stow -d dotfiles -t "$HOME_DIRECTORY" -R "$category"
 done
