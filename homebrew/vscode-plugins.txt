@@ -16,6 +16,7 @@ nickfode.latex-formatter
 seatonjiang.gitmoji-vscode
 timonwong.shellcheck
 torn4dom4n.latex-support
+travisthetechie.write-good-linter
 trond-snekvik.simple-rst
 Tyriar.sort-lines
 yzhang.markdown-all-in-one

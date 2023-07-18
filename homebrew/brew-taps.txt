@@ -2,7 +2,6 @@ alan-turing-institute/hut23
 azure/functions
 homebrew/bundle
 homebrew/cask-versions
-homebrew/core
 homebrew/services
 jandedobbeleer/oh-my-posh
 kde-mac/kde", "https://invent.kde.org/packaging/homebrew-kde.git
