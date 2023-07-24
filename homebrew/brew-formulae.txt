@@ -6,6 +6,7 @@ dotnet
 ffmpeg
 get_iplayer
 git
+hatch
 htop
 imagemagick
 jq
