@@ -68,7 +68,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pyenv-lazy)
+plugins=(git git-prompt pyenv-lazy)
 
 # We use pyenv-lazy to lazy-load pyenv autocompletions
 # The original instructions from https://github.com/pyenv/pyenv are:
