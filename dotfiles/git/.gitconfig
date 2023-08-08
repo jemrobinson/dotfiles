@@ -26,12 +26,11 @@
     }; merges_since_date"
     sync-fork = "!\
     sync_fork(){ \
-        TARGET=$1; \
         GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD); \
-        if [ -e $1 ]; then \
-            TARGET=main; \
+        if [ $# -ne 0 ]; then \
+            TARGET=$1; \
+            git checkout $TARGET; \
         fi; \
-        git checkout $TARGET; \
         git pull; \
         git fetch upstream; \
         git merge upstream/${TARGET}; \
