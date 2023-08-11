@@ -41,6 +41,9 @@ done
 echo "🍺 Installing Homebrew packages"
 "${SCRIPT_DIRECTORY}"/homebrew/install.sh
 
+# Fix application permissions
+sudo chown -R $(whoami):admin /Applications 2> /dev/null
+
 # Print messages
 echo "In case of font problems in zsh, see here: https://gist.github.com/kevin-smets/8568070 and https://github.com/romkatv/powerlevel10k#meslo-nerd-font-patched-for-powerlevel10k"
 echo ""
