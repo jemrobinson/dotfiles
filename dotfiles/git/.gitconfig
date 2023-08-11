@@ -9,7 +9,7 @@
         git checkout $TARGET; \
         git pull; \
         git checkout $GIT_BRANCH; \
-        git rebase $TARGET;\
+        git rebase --committer-date-is-author-date $TARGET;\
     }; rebase_onto_target"
     fix-permissions = "!\
     fix_permissions(){ \
