@@ -1,6 +1,5 @@
 adpyke.vscode-sql-formatter
 ambooth.git-rename
-bungcip.better-toml
 dawhite.mustache
 eamodio.gitlens
 foxundermoon.shell-format
@@ -14,6 +13,7 @@ ms-vscode.powershell
 ms-vscode.wordcount
 nickfode.latex-formatter
 seatonjiang.gitmoji-vscode
+tamasfe.even-better-toml
 timonwong.shellcheck
 torn4dom4n.latex-support
 travisthetechie.write-good-linter
