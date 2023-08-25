@@ -30,6 +30,8 @@
         if [ $# -ne 0 ]; then \
             TARGET=$1; \
             git checkout $TARGET; \
+        else \
+            TARGET=$GIT_BRANCH; \
         fi; \
         git pull; \
         git fetch upstream; \
