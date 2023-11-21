@@ -50,3 +50,6 @@ echo ""
 echo "Use the following colour-schemes in iTerm2"
 echo "* zsh should use 'tango-dark-tweaked' (import from the iterm directory)"
 echo "* Powershell should use 'shades-of-purple' (import from the iterm directory)"
+echo ""
+echo "To enable touchbar sudo, add 'auth sufficient pam_tid.so' to /etc/pam.d/sudo"
+
