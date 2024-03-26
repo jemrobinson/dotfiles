@@ -1,5 +1,3 @@
-authy
-azure-data-studio
 basictex
 chromedriver
 dbeaver-community
