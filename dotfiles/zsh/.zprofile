@@ -1,7 +1,8 @@
 #! /usr/bin/env zsh
 
-# N.B. This file is loaded before .zshrc in login shells
+# .zshenv -> .zprofile -> .zshrc -> .zlogin -> .zlogout
 
+# Do PATH changes here: https://apple.stackexchange.com/questions/432226/homebrew-path-set-in-zshenv-is-overridden
 # Add local bin and homebrew bin to path
 export PATH="${PATH}:${HOME}/.local/bin:/opt/homebrew/bin"
 
