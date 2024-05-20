@@ -1,6 +1,7 @@
 basictex
 chromedriver
 dbeaver-community
+digikam
 docker
 dotnet-sdk
 firefox
