@@ -39,6 +39,8 @@
         git push; \
         git checkout $GIT_BRANCH; \
     }; sync_fork"
+[core]
+	pager = less -FR
 [help]
     autocorrect = 5
 [pull]
