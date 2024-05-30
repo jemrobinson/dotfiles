@@ -1,4 +1,5 @@
 basictex
+calibre
 chromedriver
 dbeaver-community
 digikam
