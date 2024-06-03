@@ -11,35 +11,29 @@
         git checkout $GIT_BRANCH; \
         git rebase --committer-date-is-author-date $TARGET;\
     }; rebase_onto_target"
-    cleanup-local = "!\
-    cleanup_local(){ \
+    cleanup-local-branches = "!\
+    cleanup_local_branches(){ \
         GIT_MAIN_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-); \
         for BRANCH_NAME in $(git for-each-ref --format='%(refname:short)' refs/heads/); do \
-            MERGE_BASE=$(git merge-base $BRANCH_NAME $GIT_MAIN_BRANCH); \
-            BRANCH_HEAD=$(git rev-parse $BRANCH_NAME); \
             UPSTREAM=$(git branch --list $BRANCH_NAME --format '%(upstream)'); \
-            if [[ -z $UPSTREAM ]]; then \
-                if [[ $MERGE_BASE = $BRANCH_HEAD ]]; then \
-                    echo ACTION: delete orphaned branch $BRANCH_NAME as it is merged into $GIT_MAIN_BRANCH; \
-                    echo git branch -d $BRANCH_NAME; \
-                else \
-                    echo ACTION: push orphaned branch $BRANCH_NAME which has unmerged commits; \
-                    echo git push -u origin $BRANCH_NAME; \
+            if [[ $UPSTREAM = *\"$GIT_MAIN_BRANCH\" ]]; then \
+                echo Skipping local branch $BRANCH_NAME which tracks $GIT_MAIN_BRANCH; \
+                continue; \
+            fi; \
+            DIFF=$(git cherry -v $GIT_MAIN_BRANCH $BRANCH_NAME); \
+            if [[ $DIFF != '' ]]; then \
+                echo $BRANCH_NAME is not merged into $GIT_MAIN_BRANCH; \
+                git cherry -v $GIT_MAIN_BRANCH $BRANCH_NAME; \
+                if [[ $UPSTREAM = '' ]]; then \
+                    echo WARNING: branch $BRANCH_NAME has no upstream!; \
+                    echo You may want to run git push -u origin $BRANCH_NAME; \
                 fi \
             else \
-                if [[ $MERGE_BASE = $BRANCH_HEAD ]]; then \
-                    if [[ $BRANCH_NAME = $GIT_MAIN_BRANCH ]]; then \
-                        echo Keeping local branch $BRANCH_NAME as it may be tracking $GIT_MAIN_BRANCH; \
-                    else \
-                        echo ACTION: delete local branch $BRANCH_NAME as it is merged into $GIT_MAIN_BRANCH; \
-                        echo git branch -D $BRANCH_NAME; \
-                    fi \
-                else \
-                    echo Keeping local $BRANCH_NAME as its origin is not merged into $GIT_MAIN_BRANCH; \
-                fi \
+                echo Deleting $BRANCH_NAME which has no commits that are not part of $GIT_MAIN_BRANCH; \
+                git branch -d $BRANCH_NAME; \
             fi \
         done \
-    }; cleanup_local"
+    }; cleanup_local_branches"
     fix-permissions = "!\
     fix_permissions(){ \
         git diff -p \
