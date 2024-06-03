@@ -11,6 +11,35 @@
         git checkout $GIT_BRANCH; \
         git rebase --committer-date-is-author-date $TARGET;\
     }; rebase_onto_target"
+    cleanup-local = "!\
+    cleanup_local(){ \
+        GIT_MAIN_BRANCH=$(git rev-parse --abbrev-ref origin/HEAD | cut -c8-); \
+        for BRANCH_NAME in $(git for-each-ref --format='%(refname:short)' refs/heads/); do \
+            MERGE_BASE=$(git merge-base $BRANCH_NAME $GIT_MAIN_BRANCH); \
+            BRANCH_HEAD=$(git rev-parse $BRANCH_NAME); \
+            UPSTREAM=$(git branch --list $BRANCH_NAME --format '%(upstream)'); \
+            if [[ -z $UPSTREAM ]]; then \
+                if [[ $MERGE_BASE = $BRANCH_HEAD ]]; then \
+                    echo ACTION: delete orphaned branch $BRANCH_NAME as it is merged into $GIT_MAIN_BRANCH; \
+                    echo git branch -d $BRANCH_NAME; \
+                else \
+                    echo ACTION: push orphaned branch $BRANCH_NAME which has unmerged commits; \
+                    echo git push -u origin $BRANCH_NAME; \
+                fi \
+            else \
+                if [[ $MERGE_BASE = $BRANCH_HEAD ]]; then \
+                    if [[ $BRANCH_NAME = $GIT_MAIN_BRANCH ]]; then \
+                        echo Keeping local branch $BRANCH_NAME as it may be tracking $GIT_MAIN_BRANCH; \
+                    else \
+                        echo ACTION: delete local branch $BRANCH_NAME as it is merged into $GIT_MAIN_BRANCH; \
+                        echo git branch -D $BRANCH_NAME; \
+                    fi \
+                else \
+                    echo Keeping local $BRANCH_NAME as its origin is not merged into $GIT_MAIN_BRANCH; \
+                fi \
+            fi \
+        done \
+    }; cleanup_local"
     fix-permissions = "!\
     fix_permissions(){ \
         git diff -p \
@@ -39,6 +68,13 @@
         git push; \
         git checkout $GIT_BRANCH; \
     }; sync_fork"
+    update-local = "!\
+    update_local(){ \
+        for BRANCH_NAME in $(git for-each-ref --format='%(refname:short)' refs/heads/); do \
+            git checkout $BRANCH_NAME; \
+            git pull; \
+        done \
+    }; update_local"
 [core]
 	pager = less -FR
 [help]
