@@ -46,14 +46,20 @@ echo "🍺 Installing Homebrew packages"
 sudo chown -R "$(whoami):admin" /Applications 2> /dev/null
 
 # Enable touchbar sudo
-TOUCHBAR_STRING=$(grep "sufficient" /etc/pam.d/sudo | grep "auth" | head -n 1 | sed "s/pam_.*.so/pam_tid.so/")
-pam_sudo_target=$(mktemp)
-(cat /etc/pam.d/sudo; echo "$TOUCHBAR_STRING") | sort | uniq > "$pam_sudo_target"
-echo "Enabling touchbar sudo in /etc/pam.d/sudo"
-# shellcheck disable=SC2024
-sudo tee /etc/pam.d/sudo < "$pam_sudo_target" > /dev/null
-grep "pam_tid.so" /etc/pam.d/sudo > /dev/null && echo "Touchbar sudo ENABLED" || echo "Touchbar sudo NOT ENABLED"
-rm -rf "$pam_sudo_target"
+PAM_SUDO_CONFIG="/etc/pam.d/sudo"
+if grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null; then
+    echo "Touchbar sudo already ENABLED"
+else
+    echo "Touchbar sudo is NOT ENABLED"
+    TOUCHBAR_STRING=$(grep "sufficient" $PAM_SUDO_CONFIG | grep "auth" | head -n 1 | sed "s/pam_.*.so/pam_tid.so/")
+    PAM_SUDO_TMP=$(mktemp)
+    (cat $PAM_SUDO_CONFIG; echo "$TOUCHBAR_STRING") | sort | uniq > "$PAM_SUDO_TMP"
+    echo "Enabling touchbar sudo in $PAM_SUDO_CONFIG"
+    # shellcheck disable=SC2024
+    sudo tee $PAM_SUDO_CONFIG < "$PAM_SUDO_TMP" > /dev/null
+    grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null && echo "Touchbar sudo is ENABLED" || echo "Touchbar sudo is NOT ENABLED"
+    rm -rf "$PAM_SUDO_TMP"
+fi
 
 # Print instructional messages
 echo ""

@@ -12,7 +12,9 @@ imagemagick
 jq
 node
 oh-my-posh
+ollama
 openssl@1.1
+poetry
 postgis
 pre-commit
 pulumi
