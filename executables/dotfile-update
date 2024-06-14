@@ -46,19 +46,24 @@ echo "🍺 Installing Homebrew packages"
 sudo chown -R "$(whoami):admin" /Applications 2> /dev/null
 
 # Enable touchbar sudo
-PAM_SUDO_CONFIG="/etc/pam.d/sudo"
-if grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null; then
-    echo "Touchbar sudo already ENABLED"
+MACOS_VERSION="$(sw_vers | grep ProductVersion | awk '{print $2}')"
+if [ "$(echo "$MACOS_VERSION > 14" | bc)" -eq 1 ]; then
+    echo "Touchbar sudo is not supported for macOS ${MACOS_VERSION}"
 else
-    echo "Touchbar sudo is NOT ENABLED"
-    TOUCHBAR_STRING=$(grep "sufficient" $PAM_SUDO_CONFIG | grep "auth" | head -n 1 | sed "s/pam_.*.so/pam_tid.so/")
-    PAM_SUDO_TMP=$(mktemp)
-    (cat $PAM_SUDO_CONFIG; echo "$TOUCHBAR_STRING") | sort | uniq > "$PAM_SUDO_TMP"
-    echo "Enabling touchbar sudo in $PAM_SUDO_CONFIG"
-    # shellcheck disable=SC2024
-    sudo tee $PAM_SUDO_CONFIG < "$PAM_SUDO_TMP" > /dev/null
-    grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null && echo "Touchbar sudo is ENABLED" || echo "Touchbar sudo is NOT ENABLED"
-    rm -rf "$PAM_SUDO_TMP"
+    PAM_SUDO_CONFIG="/etc/pam.d/sudo"
+    if grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null; then
+        echo "Touchbar sudo already ENABLED"
+    else
+        echo "Touchbar sudo is NOT ENABLED"
+        TOUCHBAR_STRING=$(grep "sufficient" $PAM_SUDO_CONFIG | grep "auth" | head -n 1 | sed "s/pam_.*.so/pam_tid.so/")
+        PAM_SUDO_TMP=$(mktemp)
+        (cat $PAM_SUDO_CONFIG; echo "$TOUCHBAR_STRING") | sort | uniq > "$PAM_SUDO_TMP"
+        echo "Enabling touchbar sudo in $PAM_SUDO_CONFIG"
+        # shellcheck disable=SC2024
+        sudo tee $PAM_SUDO_CONFIG < "$PAM_SUDO_TMP" > /dev/null
+        grep "pam_tid.so" $PAM_SUDO_CONFIG > /dev/null && echo "Touchbar sudo is ENABLED" || echo "Touchbar sudo is NOT ENABLED"
+        rm -rf "$PAM_SUDO_TMP"
+    fi
 fi
 
 # Print instructional messages
