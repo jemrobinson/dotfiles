@@ -16,7 +16,6 @@ seatonjiang.gitmoji-vscode
 tamasfe.even-better-toml
 timonwong.shellcheck
 torn4dom4n.latex-support
-travisthetechie.write-good-linter
 trond-snekvik.simple-rst
 tyriar.sort-lines
 yzhang.markdown-all-in-one
