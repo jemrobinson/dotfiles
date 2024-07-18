@@ -4,8 +4,16 @@ check_subscription(){
     SUBSCRIPTION="$1"
     echo "Checking subscription '$SUBSCRIPTION'..."
     az keyvault list-deleted --subscription "$SUBSCRIPTION" --query '[].name' -o tsv 2>/dev/null | while read -r KVNAME; do
-        echo "Purging deleted '$KVNAME' in '$SUBSCRIPTION'..."
+        echo " [ ] Found deleted '$KVNAME' in '$SUBSCRIPTION'..."
         az keyvault purge --name "$KVNAME" --subscription "$SUBSCRIPTION" 2>/dev/null
+        EXISTS=$(az keyvault list-deleted --subscription "$SUBSCRIPTION" --query "[?name=='$KVNAME']")
+        if [ "$EXISTS" ]; then
+            RESULT="[x] Could not purge '$KVNAME' in '$SUBSCRIPTION'."
+        else
+            RESULT="[✔️] Purged '$KVNAME' in '$SUBSCRIPTION'."
+        fi
+        # shellcheck disable=SC2028
+        echo "\r\033[1A\033[0K $RESULT"
     done
 }
 
