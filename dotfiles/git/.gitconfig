@@ -47,6 +47,7 @@
         TO=$2; \
         git log --merges --first-parent --pretty='format:%C(auto)%h %<(17) %ah %b' --after=$FROM --before=$TO; \
     }; merges_since_date"
+    please = push --force-with-lease
     sync-fork = "!\
     sync_fork(){ \
         GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD); \
