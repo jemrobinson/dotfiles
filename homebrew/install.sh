@@ -25,12 +25,6 @@ while IFS= read -r line; do
     echo "cask \"$line\"" >> "${script_directory}/Brewfile"
 done < "${script_directory}/brew-casks.txt"
 
-# Add casks
-echo "  ⌛ Adding VSCode plugins to bundle..."
-while IFS= read -r line; do
-    echo "vscode \"$line\"" >> "${script_directory}/Brewfile"
-done < "${script_directory}/vscode-plugins.txt"
-
 # Install bundle with homebrew
 echo "  ⌛ Applying bundle..."
 brew update
