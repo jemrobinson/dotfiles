@@ -4,7 +4,7 @@
 
 # Do PATH changes here: https://apple.stackexchange.com/questions/432226/homebrew-path-set-in-zshenv-is-overridden
 # Add local bin and homebrew (s)bin to path
-export PATH="${HOME}/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:${PATH}"
+export PATH="${HOME}/.local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/Library/TeX/texbin:${PATH}"
 
 # Ignore duplicates in history
 export HISTCONTROL=ignoredups
