@@ -47,7 +47,8 @@ sudo chown -R "$(whoami):admin" /Applications 2> /dev/null
 
 # Enable touchbar sudo
 MACOS_VERSION="$(sw_vers | grep ProductVersion | awk '{print $2}')"
-if [ "$(echo "$MACOS_VERSION > 14" | bc)" -eq 1 ]; then
+MACOS_VERSION_AS_FLOAT=$(echo "$MACOS_VERSION" | sed 's/\.//2')
+if [ "$(echo "$MACOS_VERSION_AS_FLOAT > 14" | bc)" -eq 1 ]; then
     echo "Touchbar sudo is not supported for macOS ${MACOS_VERSION}"
 else
     PAM_SUDO_CONFIG="/etc/pam.d/sudo"
