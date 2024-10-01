@@ -13,7 +13,6 @@ libreoffice
 microsoft-auto-update
 microsoft-azure-storage-explorer
 microsoft-office
-microsoft-remote-desktop
 monitorcontrol
 portfolioperformance
 powershell
@@ -21,4 +20,5 @@ skype
 slack
 visual-studio-code
 vlc
+windows-app
 zoom
