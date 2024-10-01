@@ -14,6 +14,7 @@ node
 oh-my-posh
 ollama
 openssl@1.1
+pipx
 poetry
 postgis
 pre-commit
