@@ -14,7 +14,6 @@ kubectl
 node
 oh-my-posh
 ollama
-openssl@1.1
 pipx
 poetry
 postgis
