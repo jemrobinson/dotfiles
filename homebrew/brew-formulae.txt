@@ -2,7 +2,6 @@ act
 azure-cli
 azure-functions-core-tools@3
 coreutils
-dotnet
 ffmpeg
 get_iplayer
 git
@@ -23,7 +22,6 @@ pyenv
 ruby
 shellcheck
 stow
-texlive
 tree
 wget
 whatwhat
