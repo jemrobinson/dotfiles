@@ -1,5 +1,6 @@
 basictex
 calibre
+chatbox
 chromedriver
 dbeaver-community
 digikam
