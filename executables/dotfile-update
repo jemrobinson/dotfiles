@@ -16,14 +16,18 @@ fi
 export PATH="/opt/homebrew/bin:${PATH}"
 
 # Install homebrew packages
-echo "🍺 Installing stow with Homebrew"
-brew install stow 2> /dev/null
+echo "🍺 Installing Homebrew packages"
+"${SCRIPT_DIRECTORY}"/homebrew/install.sh
 
 # Install oh-my-zsh
 echo "🐚 Installing oh-my-zsh"
 "${SCRIPT_DIRECTORY}"/oh-my-zsh/install.sh
 
 # Install dotfiles with stow
+if ! (type stow > /dev/null 2>&1); then
+    echo "stow executable was not found!"
+    exit 1
+fi
 echo "⚫ Installing dotfiles with stow"
 find "${SCRIPT_DIRECTORY}/dotfiles" -type d -depth 1 -exec basename {} \; | while read -r category; do
     echo "  ⌛ Working on $category"
@@ -34,13 +38,9 @@ done
 echo "❗ Installing executables with stow"
 mkdir -p "${LOCAL_BIN_DIRECTORY}"
 stow -t "${LOCAL_BIN_DIRECTORY}" -d "${SCRIPT_DIRECTORY}" -R executables
-find "${LOCAL_BIN_DIRECTORY}" -type f -depth 1 | while read -r executable; do
+find "${LOCAL_BIN_DIRECTORY}" -type f -o -type l -depth 1 | while read -r executable; do
     echo "  ✅ Installed $executable"
 done
-
-# Install homebrew packages
-echo "🍺 Installing Homebrew packages"
-"${SCRIPT_DIRECTORY}"/homebrew/install.sh
 
 # Fix application permissions
 sudo chown -R "$(whoami):admin" /Applications 2> /dev/null
