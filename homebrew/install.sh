@@ -2,6 +2,11 @@
 
 script_directory=$(dirname "$(readlink -f "$0")")
 
+# Update installed packages
+echo "  ⌛ Updating installed packages..."
+brew update
+brew upgrade
+
 # Construct Brewfile
 rm "${script_directory}/Brewfile" 2> /dev/null
 rm "${script_directory}/Brewfile.lock.json" 2> /dev/null
@@ -27,5 +32,4 @@ done < "${script_directory}/brew-casks.txt"
 
 # Install bundle with homebrew
 echo "  ⌛ Applying bundle..."
-brew update
 brew bundle --file "${script_directory}/Brewfile" --force --cleanup
