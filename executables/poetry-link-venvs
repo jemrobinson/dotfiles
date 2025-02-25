@@ -17,7 +17,7 @@ find "$POETRY_VENV_DIR" -type d -depth 1 | while read -r VENV_PATH; do
         ln -s "$VENV_PATH" "${PYENV_VENV_DIR}/${VENV_NAME}";
     fi
     # Symlink poetry executable from pyenv
-    POETRY_EXECUTABLE_SOURCE="$(realpath ${VENV_PATH}/bin/python/../poetry)"
+    POETRY_EXECUTABLE_SOURCE="$(realpath $(pyenv which poetry))"
     if [ -e "$POETRY_EXECUTABLE_SOURCE" ]; then
         POETRY_EXECUTABLE_TARGET="${VENV_PATH}/bin/poetry"
         if [ -e "$POETRY_EXECUTABLE_TARGET" ]; then
