@@ -12,10 +12,13 @@ inkscape
 iterm2
 libreoffice
 mattermost
-microsoft-auto-update
 microsoft-azure-storage-explorer
-microsoft-office
+microsoft-excel
+microsoft-outlook
+microsoft-powerpoint
+microsoft-word
 monitorcontrol
+onedrive
 portfolioperformance
 powershell
 skype
