@@ -11,6 +11,7 @@ gimp
 inkscape
 iterm2
 libreoffice
+mattermost
 microsoft-auto-update
 microsoft-azure-storage-explorer
 microsoft-office
