@@ -33,3 +33,8 @@ done < "${script_directory}/brew-casks.txt"
 # Install bundle with homebrew
 echo "  ⌛ Applying bundle..."
 brew bundle --file "${script_directory}/Brewfile" --force --cleanup
+
+# Upgrade any casks with auto_updates enabled
+brew upgrade --cask --greedy
+brew remove --force microsoft-auto-update
+
