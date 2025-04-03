@@ -24,5 +24,6 @@ ruby
 shellcheck
 stow
 tree
+uv
 wget
 whatwhat
