@@ -21,7 +21,6 @@ monitorcontrol
 onedrive
 portfolioperformance
 powershell
-skype
 slack
 visual-studio-code
 vlc
