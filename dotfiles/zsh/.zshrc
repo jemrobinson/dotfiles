@@ -1,6 +1,7 @@
 #! /usr/bin/env zsh
 
-# .zshenv -> .zprofile -> .zshrc -> .zlogin -> .zlogout
+zmodload zsh/zprof
+# .zshenv -> (.zprofile iff login) -> .zshrc -> (.zlogin iff login) -> .zlogout
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]

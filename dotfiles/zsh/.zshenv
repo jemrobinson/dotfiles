@@ -1,7 +1,7 @@
 #! /usr/bin/env zsh
 
-# This file also gets loaded for non-interactive shells so PATH changes should live here
-# .zshenv -> .zprofile -> .zshrc -> .zlogin -> .zlogout
+# This file gets loaded for all shells so PATH changes should live here
+# .zshenv -> (.zprofile iff login) -> .zshrc -> (.zlogin iff login) -> .zlogout
 
 # https://blog.patshead.com/2011/04/improve-your-oh-my-zsh-startup-time-maybe.html
 skip_global_compinit=1

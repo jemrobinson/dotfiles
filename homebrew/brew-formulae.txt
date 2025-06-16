@@ -2,6 +2,7 @@ act
 azure-cli
 azure-functions-core-tools@3
 coreutils
+exiv2
 ffmpeg
 get_iplayer
 git
