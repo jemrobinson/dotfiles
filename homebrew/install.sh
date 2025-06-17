@@ -35,6 +35,12 @@ echo "  ⌛ Applying bundle..."
 brew bundle --file "${script_directory}/Brewfile" --force --cleanup
 
 # Upgrade any casks with auto_updates enabled
+echo "  ⌛ Upgrading casks..."
 brew upgrade --cask --greedy
-brew remove --force microsoft-auto-update
+
+# Remove Microsoft Auto Update if it is installed
+echo "  ⌛ Removing undesired packages..."
+if [[ $(brew list --cask -1 | grep microsoft-auto-update) ]]; then
+    brew remove --force microsoft-auto-update
+fi
 
