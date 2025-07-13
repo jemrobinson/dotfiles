@@ -4,7 +4,7 @@ chatbox
 chromedriver
 dbeaver-community
 digikam
-docker
+docker-desktop
 dotnet-sdk
 firefox
 gimp
