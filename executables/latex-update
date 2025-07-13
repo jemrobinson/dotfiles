@@ -1,0 +1,23 @@
+#! /usr/bin/env sh
+
+EMPH=$(printf '\e[34m')
+RESET=$(printf '\e[0m')
+
+# Update LaTeX folder permissions
+echo "📚 Updating LaTeX folder permissions"
+sudo chown -R "$(whoami):admin" /usr/local/texlive 2> /dev/null
+
+# Update tlmgr packages
+echo "📦 Updating LaTeX packages..."
+tlmgr update --self
+tlmgr update --all
+
+# Compact database
+echo "✒️ Installing LaTeX packages..."
+tlmgr install \
+    beamer \
+    bibtex \
+    booktabs \
+    latex \
+    siunitx \
+    xelatex-dev

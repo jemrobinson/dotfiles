@@ -46,6 +46,12 @@ done
 echo "🔧 Fixing application permissions"
 sudo chown -R "$(whoami):admin" /Applications 2> /dev/null
 
+# Update TeX installation
+echo " Updating TeX installation"
+sudo chown -R "$(whoami):admin" /usr/local/texlive 2> /dev/null
+tlmgr update --self
+tlmgr update --all
+
 # Enable touchbar sudo
 MACOS_VERSION="$(sw_vers | grep ProductVersion | awk '{print $2}')"
 MACOS_VERSION_AS_FLOAT=$(echo "$MACOS_VERSION" | sed 's/\.//2')
