@@ -11,6 +11,7 @@ htop
 imagemagick
 jq
 kubectl
+micromamba
 minikube
 node
 oh-my-posh
