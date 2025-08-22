@@ -1,5 +1,5 @@
 # Lazy load mamba
-lazy_mamba_aliases=('mamba' 'micromamba')
+lazy_mamba_aliases=('conda' 'mamba' 'micromamba')
 load_mamba() {
   for lazy_mamba_alias in $lazy_mamba_aliases; do
     unalias $lazy_mamba_alias
