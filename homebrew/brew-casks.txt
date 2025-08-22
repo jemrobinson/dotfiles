@@ -17,6 +17,7 @@ microsoft-excel
 microsoft-outlook
 microsoft-powerpoint
 microsoft-word
+miniforge
 monitorcontrol
 onedrive
 portfolioperformance
