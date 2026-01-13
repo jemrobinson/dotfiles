@@ -1,6 +1,5 @@
 act
 azure-cli
-azure-functions-core-tools@3
 coreutils
 exiv2
 ffmpeg
@@ -13,7 +12,6 @@ jq
 kubectl
 minikube
 node
-oh-my-posh
 ollama
 pipx
 poetry

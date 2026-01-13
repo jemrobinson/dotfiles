@@ -1,6 +1,5 @@
 basictex
 calibre
-chatbox
 chromedriver
 dbeaver-community
 digikam
@@ -19,6 +18,7 @@ microsoft-powerpoint
 microsoft-word
 miniforge
 monitorcontrol
+obsidian
 onedrive
 portfolioperformance
 powershell
