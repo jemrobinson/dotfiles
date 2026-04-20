@@ -10,7 +10,6 @@ inkscape
 iterm2
 libreoffice
 mattermost
-microsoft-azure-storage-explorer
 microsoft-excel
 microsoft-outlook
 microsoft-powerpoint
