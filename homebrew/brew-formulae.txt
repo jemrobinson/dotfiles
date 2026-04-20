@@ -10,7 +10,6 @@ htop
 imagemagick
 jq
 pre-commit
-pyenv
 ruby
 shellcheck
 stow
