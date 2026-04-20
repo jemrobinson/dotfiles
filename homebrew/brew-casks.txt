@@ -4,7 +4,6 @@ chromedriver
 dbeaver-community
 digikam
 docker-desktop
-dotnet-sdk
 firefox
 gimp
 inkscape
