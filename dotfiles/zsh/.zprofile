@@ -12,3 +12,5 @@ export HISTCONTROL=ignoredups
 # Aliases
 # SSH that does not store details in the hosts file
 alias goldfissh='ssh -o "UserKnownHostsFile=/dev/null" -o "StrictHostKeyChecking=no"'
+
+alias isambardssh='clifton auth --identity ~/.ssh/id_ed25519_jrobinson_isambardai && ssh u6iz.aip2.isambard'
