@@ -9,7 +9,6 @@ hatch
 htop
 imagemagick
 jq
-pipx
 postgis
 pre-commit
 pulumi
