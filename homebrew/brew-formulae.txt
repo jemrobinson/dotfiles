@@ -9,7 +9,6 @@ hatch
 htop
 imagemagick
 jq
-ollama
 pipx
 poetry
 postgis
