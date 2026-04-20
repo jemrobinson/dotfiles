@@ -9,8 +9,6 @@ hatch
 htop
 imagemagick
 jq
-kubectl
-minikube
 node
 ollama
 pipx
