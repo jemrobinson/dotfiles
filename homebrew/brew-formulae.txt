@@ -9,7 +9,6 @@ hatch
 htop
 imagemagick
 jq
-node
 ollama
 pipx
 poetry
