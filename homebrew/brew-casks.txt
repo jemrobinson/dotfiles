@@ -19,7 +19,6 @@ monitorcontrol
 obsidian
 onedrive
 portfolioperformance
-powershell
 slack
 visual-studio-code
 vlc
