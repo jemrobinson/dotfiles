@@ -10,7 +10,6 @@ htop
 imagemagick
 jq
 pipx
-poetry
 postgis
 pre-commit
 pulumi
