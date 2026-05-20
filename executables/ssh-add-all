@@ -1,0 +1,4 @@
+#! /usr/bin/env sh
+for pub in ~/.ssh/*.pub; do
+    ssh-add --apple-use-keychain "${pub%.pub}"
+done
