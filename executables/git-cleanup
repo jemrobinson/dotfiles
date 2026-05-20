@@ -34,7 +34,8 @@ done
 
 # Compact database
 echo "⌛ Compacting local database..."
-git gc --aggressive
+git reflog expire --all --expire=now
+git gc --prune=now --aggressive
 
 # List local branches
 echo "⌛ Available local branches..."
