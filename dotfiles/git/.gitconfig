@@ -71,7 +71,7 @@
         done \
     }; update_local"
 [core]
-	pager = less -FR
+    pager = less -FRX
 [help]
     autocorrect = 5
 [pull]
