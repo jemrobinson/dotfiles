@@ -1,3 +1,2 @@
 alan-turing-institute/hut23
-azure/functions
 kde-mac/kde", "https://invent.kde.org/packaging/homebrew-kde.git

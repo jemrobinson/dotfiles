@@ -17,6 +17,8 @@ echo "  ⌛ Adding homebrew taps to bundle..."
 while IFS= read -r line; do
     echo "tap \"$line\"" >> "${script_directory}/Brewfile"
 done < "${script_directory}/brew-taps.txt"
+brew trust alan-turing-institute/hut23
+brew trust kde-mac/kde
 
 # Add formulae
 echo "  ⌛ Adding homebrew formulae to bundle..."
