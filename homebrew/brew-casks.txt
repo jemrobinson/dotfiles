@@ -1,6 +1,5 @@
 basictex
 calibre
-chromedriver
 dbeaver-community
 digikam
 docker-desktop
@@ -14,7 +13,6 @@ microsoft-excel
 microsoft-outlook
 microsoft-powerpoint
 microsoft-word
-miniforge
 monitorcontrol
 obsidian
 onedrive
@@ -22,5 +20,4 @@ portfolioperformance
 slack
 visual-studio-code
 vlc
-windows-app
 zoom

@@ -125,3 +125,4 @@ source $ZSH/oh-my-zsh.sh
 # Set bash-like tab completion
 setopt noautomenu
 setopt nomenucomplete
+
