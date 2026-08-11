@@ -4,6 +4,10 @@ HOME_DIRECTORY="${HOME}"
 SCRIPT_DIRECTORY=$(dirname "$(dirname "$(readlink -f "$0")")")
 LOCAL_BIN_DIRECTORY="${HOME_DIRECTORY}/.local/bin"
 
+# Apply OS updates
+echo "🍏 Installing OS updates"
+softwareupdate --install -a
+
 # Install fonts
 echo "🖨️ Installing fonts"
 cp "${SCRIPT_DIRECTORY}"/fonts/*.ttf ~/Library/Fonts
