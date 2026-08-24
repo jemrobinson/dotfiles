@@ -1,8 +1,0 @@
-#! /usr/bin/env sh
-brew update
-brew upgrade --force
-brew upgrade --cask --force
-brew cleanup --prune=all
-brew autoremove
-brew doctor
-sudo chown -R jrobinson:staff /Applications/*.app 2> /dev/null
