@@ -1,14 +1,11 @@
 basictex
 calibre
 dbeaver-community
-digikam
 docker-desktop
 firefox
-gimp
 inkscape
 iterm2
 libreoffice
-mattermost
 microsoft-excel
 microsoft-outlook
 microsoft-powerpoint
