@@ -44,12 +44,9 @@ brew bundle cleanup --file "${script_directory}/Brewfile" --force
 echo "  ⌛ Upgrading casks..."
 brew upgrade --cask --force --greedy
 
-# Remove Microsoft Auto Update if it is installed
+# Remove unnecessary packages
 echo "  ⌛ Removing undesired packages..."
 brew autoremove
-if [[ $(brew list --cask -1 | grep microsoft-auto-update) ]]; then
-    brew remove --force microsoft-auto-update
-fi
 
 # Cleanup
 echo "  ⌛ Health check..."
