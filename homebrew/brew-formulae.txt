@@ -1,5 +1,4 @@
 act
-azure-cli
 coreutils
 exiv2
 ffmpeg

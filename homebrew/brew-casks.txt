@@ -1,3 +1,4 @@
+azure-cli
 basictex
 calibre
 dbeaver-community
